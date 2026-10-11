@@ -127,4 +127,4 @@ def update_product_partial(id: int, product: ProductPatch):
         detail="Product Not Found"
     )
     
-
+print("Checking Fetch")
