@@ -78,8 +78,12 @@ def get_products_by_price(price: int):
 @app.post("/products")
 def create_product(product: ProductRequest):
 
-    products.append(product.model_dump())
-    return products
+    new_id = max((product["id"] for product in products), default=0) +1
+    #new_id = products[-1]["id"]+1
+    new_product = product.model_dump()
+    new_product["id"] = new_id
+    products.append(new_product)
+    return new_product
 
 @app.put("/products/{id}")
 def update_product(id: int, product: ProductRequest):
@@ -126,5 +130,6 @@ def update_product_partial(id: int, product: ProductPatch):
         status_code=404,
         detail="Product Not Found"
     )
-    
-print("Checking Fetch")
+
+
+
