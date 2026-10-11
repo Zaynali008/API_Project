@@ -120,7 +120,7 @@ def update_product_partial(id: int, product: ProductPatch):
                 item["category"] = product.category
             if product.price is not None:
                 item["price"] = product.price
-
+            return item
     
     raise HTTPException(
         status_code=404,
